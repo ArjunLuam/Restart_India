@@ -51,13 +51,14 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_mobile" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_width="0 dp"
+        android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="20dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="3dp"
+        app:layout_constraintDimensionRatio="16:9.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3">
@@ -69,11 +70,11 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="328dp"
+                android:layout_width="0dp"
                 android:layout_height="64dp"
-                android:layout_marginStart="23.94dp"
+                android:layout_marginStart="22dp"
                 android:layout_marginTop="44dp"
-                android:layout_marginEnd="23.96dp"
+                android:layout_marginEnd="22dp"
                 android:hint="Contact Number"
                 app:boxCornerRadiusBottomEnd="16dp"
                 app:boxCornerRadiusBottomStart="16dp"
@@ -101,7 +102,7 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="5dp"
                 android:backgroundTint="@color/buttonbackground"
                 android:elevation="2dp"
