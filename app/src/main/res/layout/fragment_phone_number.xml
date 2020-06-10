@@ -98,16 +98,18 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/get_code"
-                style="@style/ButtonFilled"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="28dp"
                 android:backgroundTint="@color/buttonbackground"
                 android:elevation="2dp"
-                android:text="GET CODE"
+                android:paddingTop="5dp"
+                android:text="NEXT"
                 android:textColor="#fff"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-                app:layout_constraintHorizontal_bias="0.511"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
                 app:strokeColor="@color/buttonbackground"
