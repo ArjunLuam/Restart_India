@@ -29,9 +29,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/space_illus"
+        android:src="@drawable/hire"
         app:layout_constraintBottom_toBottomOf="@id/iv_dots"
-        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintEnd_toEndOf="@id/iv_dots"
         app:layout_constraintStart_toStartOf="@id/iv_dots"
         app:layout_constraintTop_toTopOf="@id/iv_dots" />
@@ -43,27 +43,22 @@
         android:layout_marginBottom="16dp"
         android:alpha="0.9"
         android:text="Let's Get Started"
-        android:textColor="@color/black"
-        android:textFontWeight="700"
-        android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/tvBody"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline1"
+        style="@style/HeaderText"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/tvBody"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:alpha="0.75"
         android:text="Join Us Now And Enjoy Credit Free Shipping Instantly"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="@+id/tvHeader"
         app:layout_constraintStart_toStartOf="@+id/tvHeader"
+        style="@style/BodyText"
         app:layout_constraintTop_toBottomOf="@+id/tvHeader" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -104,6 +99,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginEnd="48dp"
         android:text="Login"
+        app:layout_constraintDimensionRatio="270:50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

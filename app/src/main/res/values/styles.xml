@@ -20,4 +20,16 @@
         <item name="strokeColor">@color/colorAccent</item>
     </style>
 
+    <style name="BodyText">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
+        <item name="android:textColor">@color/blackText</item>
+    </style>
+
+    <style name="HeaderText">
+        <item name="android:textColor">@color/blackText</item>
+        <item name="fontFamily">@font/poppinsbold</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
 </resources>
