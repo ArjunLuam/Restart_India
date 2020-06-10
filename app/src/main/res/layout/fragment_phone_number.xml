@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
+    android:elevation="16dp"
     tools:context=".login.phone_number">
 
 
@@ -32,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Mobile Verification"
+        android:text="@string/enter_no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
@@ -43,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:gravity="center_horizontal"
-        android:text="Enter your mobile number to receive a verification code"
+        android:text="@string/enter_no_body"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_mobile"
         app:layout_constraintHorizontal_bias="0.0"
@@ -51,13 +52,14 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_mobile" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="20dp"
         app:cardCornerRadius="16dp"
-        app:cardElevation="3dp"
+        app:cardElevation="9dp"
+        app:layout_constraintDimensionRatio="16:9.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3">
@@ -69,12 +71,12 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="328dp"
+                android:layout_width="0dp"
                 android:layout_height="64dp"
-                android:layout_marginStart="23.94dp"
+                android:layout_marginStart="22dp"
                 android:layout_marginTop="44dp"
-                android:layout_marginEnd="23.96dp"
-                android:hint="Contact Number"
+                android:layout_marginEnd="22dp"
+                android:hint="@string/contact"
                 app:boxCornerRadiusBottomEnd="16dp"
                 app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusTopEnd="16dp"
@@ -98,18 +100,21 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/get_code"
-
-                android:layout_width="wrap_content"
+                style="@style/ButtonFilled"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="28dp"
-                android:backgroundTint="@color/buttonbackground"
+                android:layout_marginEnd="5dp"
+                android:backgroundTint="@color/colorPrimary"
                 android:elevation="2dp"
+                android:fontFamily="@font/poppinsbold"
                 android:paddingTop="5dp"
-                android:text="NEXT"
+                android:text="@string/next"
                 android:textColor="#fff"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.508"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
                 app:strokeColor="@color/buttonbackground"
@@ -122,6 +127,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
+        app:layout_constraintGuide_percent="0.6019152" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/ic_phonr"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/submit_btn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
@@ -16,6 +15,7 @@
         app:layout_constraintGuide_percent="0.15" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/f_name_empl"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,12 +27,13 @@
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
-        app:boxStrokeColor="@color/strokeBorder"
+        app:boxStrokeColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline14">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_f_name_empl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="23dp" />
@@ -59,7 +60,7 @@
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
-        app:boxStrokeColor="@color/strokeBorder"
+        app:boxStrokeColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline15">
@@ -80,6 +81,7 @@
         app:layout_constraintGuide_percent="0.45" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dist_empl"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -91,14 +93,16 @@
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
-        app:boxStrokeColor="@color/strokeBorder"
+        app:boxStrokeColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline16">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_dist_empl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsregular"
             android:paddingStart="23dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -111,6 +115,7 @@
         app:layout_constraintGuide_percent="0.6" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pin_empl"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -122,14 +127,16 @@
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
-        app:boxStrokeColor="@color/strokeBorder"
+        app:boxStrokeColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline17">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_pin_empl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppinsregular"
             android:inputType="number"
             android:paddingStart="23dp" />
 
@@ -155,12 +162,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/empl_submit"
         style="@style/ButtonFilled"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="40dp"
+        android:fontFamily="@font/poppinssemibold"
         android:text="SUBMIT"
         app:elevation="2dp"
         app:layout_constraintDimensionRatio="270:50"
