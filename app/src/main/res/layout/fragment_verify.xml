@@ -75,7 +75,7 @@
 
             <EditText
                 android:id="@+id/num1"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="8dp"
@@ -94,7 +94,7 @@
 
             <EditText
                 android:id="@+id/num2"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="8dp"
@@ -112,7 +112,7 @@
 
             <EditText
                 android:id="@+id/num3"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="8dp"
@@ -130,7 +130,7 @@
 
             <EditText
                 android:id="@+id/num4"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="8dp"
@@ -148,7 +148,7 @@
 
             <EditText
                 android:id="@+id/num5"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="8dp"
@@ -166,7 +166,7 @@
 
             <EditText
                 android:id="@+id/num6"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="8dp"
@@ -206,6 +206,17 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.6019152" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/otp"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 
