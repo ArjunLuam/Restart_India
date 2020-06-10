@@ -52,13 +52,14 @@
 
     <TextView
         android:id="@+id/tvBody"
+        style="@style/BodyText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Join Us Now And Enjoy Credit Free Shipping Instantly"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="@+id/tvHeader"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvHeader"
-        style="@style/BodyText"
         app:layout_constraintTop_toBottomOf="@+id/tvHeader" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -66,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.33" />
+        app:layout_constraintGuide_begin="243dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
