@@ -91,20 +91,80 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.alimuzaffar.lib.pin.PinEntryEditText
-                android:id="@+id/etCode"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="48dp"
-                android:layout_marginEnd="48dp"
-                android:inputType="number"
+            <EditText
+                android:id="@+id/editTextNumber6"
+                android:layout_width="40dp"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@id/btnVerify"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:hint="6"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:pinAnimationType="popIn" />
+                app:layout_constraintStart_toEndOf="@+id/editTextNumber5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextNumber5"
+                android:layout_width="40dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:hint="5"
+                android:inputType="number"
+                app:layout_constraintEnd_toStartOf="@+id/editTextNumber6"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/editTextNumber4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextNumber4"
+                android:layout_width="40dp"
+                android:layout_height="0dp"
+                android:hint="4"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:inputType="number"
+                app:layout_constraintEnd_toStartOf="@+id/editTextNumber5"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/editTextNumber3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextNumber3"
+                android:layout_width="40dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="3"
+                android:inputType="number"
+                app:layout_constraintEnd_toStartOf="@+id/editTextNumber4"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/editTextNumber2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextNumber2"
+                android:layout_width="40dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:inputType="number"
+                android:gravity="center"
+                android:hint="2"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/editTextNumber3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/editTextNumber"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnVerify"
@@ -113,12 +173,27 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
+                android:layout_marginBottom="15dp"
                 android:text="@string/verify"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="270:50"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextNumber"
+                android:layout_width="40dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:inputType="number"
+                android:gravity="center"
+                android:hint="1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/editTextNumber2"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etCode" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

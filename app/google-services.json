@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "364203251433",
+    "firebase_url": "https://naukri-d6373.firebaseio.com",
+    "project_id": "naukri-d6373",
+    "storage_bucket": "naukri-d6373.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364203251433:android:5d9b7e468c9bd59a5d4278",
+        "android_client_info": {
+          "package_name": "com.restartindia.naukri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "364203251433-c0s4ftqhj5vdj9dq696svs78055ejg3v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.restartindia.naukri",
+            "certificate_hash": "92e5505236d0299edcc792401b11f053a694a11a"
+          }
+        },
+        {
+          "client_id": "364203251433-tfpi19bbo1e38eknossf5irm7mccsutq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpqez86i5iBnqvK73vdNW86mwyqSgGNAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "364203251433-tfpi19bbo1e38eknossf5irm7mccsutq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
