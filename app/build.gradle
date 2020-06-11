@@ -54,4 +54,10 @@ dependencies {
 
     implementation 'com.alimuzaffar.lib:pinentryedittext:2.0.6'
 
+    //navigation component dependency
+    def nav_version = "2.3.0-rc01"
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
+
+
 }
