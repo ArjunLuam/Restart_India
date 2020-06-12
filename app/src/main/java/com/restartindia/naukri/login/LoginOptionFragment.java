@@ -23,13 +23,13 @@ public class LoginOptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_login_option, container, false);
-        Button login=view.findViewById(R.id.btn_login);
-        login.setOnClickListener(new View.OnClickListener() {
+        View view = inflater.inflate(R.layout.fragment_login_option, container, false);
+        Button register = view.findViewById(R.id.btn_signup);
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fr=getActivity().getSupportFragmentManager().beginTransaction();
-                fr.replace(R.id.container,new PhoneNumberFragment());
+                FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
+                fr.replace(R.id.container, new PhoneNumberFragment());
                 fr.addToBackStack(null).commit();
             }
         });
