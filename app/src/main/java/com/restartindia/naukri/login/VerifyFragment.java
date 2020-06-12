@@ -118,10 +118,10 @@ public class VerifyFragment extends Fragment {
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
                         transaction.replace(R.id.container, new RegisterEmployerFragment());
                         transaction.commit();
-
-                    } else {
-                        Toast.makeText(getContext(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
                     }
+//                    } else {
+//                        Toast.makeText(getContext(), "Sign In Failed", Toast.LENGTH_LONG).show();
+//                    }
                 });
     }
 

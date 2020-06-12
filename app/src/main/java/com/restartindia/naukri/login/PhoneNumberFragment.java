@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.restartindia.naukri.R;
 import com.restartindia.naukri.util.Constants;
 
@@ -17,6 +18,7 @@ import com.restartindia.naukri.util.Constants;
 public class PhoneNumberFragment extends Fragment {
 
     TextInputEditText textInputEditText;
+    TextInputLayout textInputLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,13 +32,13 @@ public class PhoneNumberFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_phone_number, container, false);
-        textInputEditText = view.findViewById(R.id.etPhoneNumber);
+        textInputLayout = view.findViewById(R.id.tilPhoneNumber);
         Button submit = view.findViewById(R.id.btnGetCode);
         submit.setOnClickListener(v -> {
-            String phn_no = textInputEditText.getText().toString();
+            String phn_no = textInputLayout.getEditText().getText().toString();
             if (phn_no.length() != 10) {
-                textInputEditText.setError("Valid number is required");
-                textInputEditText.requestFocus();
+                textInputLayout.setError("Valid number is required");
+                textInputLayout.requestFocus();
             } else {
                 String phoneNumber = "+" + 91 + phn_no;
                 Bundle bundle = new Bundle();
