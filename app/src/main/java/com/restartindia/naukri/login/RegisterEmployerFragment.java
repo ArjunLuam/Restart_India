@@ -41,6 +41,8 @@ import com.google.firebase.storage.UploadTask;
 import com.restartindia.naukri.R;
 import com.restartindia.naukri.main.ApiInterface;
 import com.restartindia.naukri.main.model.PostDetails;
+import com.restartindia.naukri.main.view.MainActivity;
+import com.restartindia.naukri.util.Constants;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -72,7 +74,7 @@ public class RegisterEmployerFragment extends Fragment {
     ProgressDialog progressDialog;
     private int REQUEST_CODE_LOCATION_PERMISSION = 99;
 
-    String address1;
+    String phoneNumber;
     String area;
     String city;
     String postalCode;
@@ -103,8 +105,17 @@ public class RegisterEmployerFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_register_employer, container, false);
+        //bundle
+
+        final Bundle bundle = getArguments();
+        if (bundle != null) {
+            phoneNumber = bundle.getString(Constants.PHONE_NUMBER);
+        }
 
 
+
+
+        //bundle
         circleImageView = view.findViewById(R.id.ivUploadedImageemp);
         msubmit = view.findViewById(R.id.empl_submit);
 
@@ -147,6 +158,7 @@ public class RegisterEmployerFragment extends Fragment {
 
                 } else {
                     uploadphoto();
+                    startActivity(new Intent(getContext(), MainActivity.class));
                 }
 
             }
@@ -162,6 +174,7 @@ public class RegisterEmployerFragment extends Fragment {
                 getLastLocation();
             } else {
                 //TODO: Handle permission not granted later
+                Toast.makeText(getContext(), "You need to allow permission to continue.", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -241,7 +254,7 @@ public class RegisterEmployerFragment extends Fragment {
                 user.updateProfile(profileUpdates)
                         .addOnCompleteListener(task1 -> {
                             if (task1.isSuccessful()) {
-                                Toast.makeText(getContext(), "Upload Successful", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(getContext(), "Upload Successful", Toast.LENGTH_LONG).show();
                                 progressDialog.dismiss();
                                 afterImageUpload();
 
