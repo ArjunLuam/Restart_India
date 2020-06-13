@@ -21,7 +21,7 @@
         app:layout_constraintVertical_chainStyle="spread" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/ivUploadedImage"
+        android:id="@+id/uploadImageEmplee"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:visibility="visible"
@@ -61,7 +61,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/f_name_emplr"
+                android:id="@+id/f_name_emplee"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
                 app:boxCornerRadiusBottomStart="24dp"
                 app:boxCornerRadiusTopEnd="24dp"
                 app:boxCornerRadiusTopStart="24dp"
-                app:layout_constraintBottom_toTopOf="@+id/dist_empl"
+                app:layout_constraintBottom_toTopOf="@+id/dist_emplee"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +89,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dist_empl"
+                android:id="@+id/dist_emplee"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,11 +102,11 @@
                 app:boxCornerRadiusBottomStart="24dp"
                 app:boxCornerRadiusTopEnd="24dp"
                 app:boxCornerRadiusTopStart="24dp"
-                app:layout_constraintBottom_toTopOf="@+id/city_empl"
+                app:layout_constraintBottom_toTopOf="@+id/city_emplee"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/f_name_emplr"
+                app:layout_constraintTop_toBottomOf="@+id/f_name_emplee"
                 app:startIconDrawable="@drawable/ic_district">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -117,14 +117,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/city_empl"
+                android:id="@+id/city_emplee"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="16dp"
-                android:hint="City"
+                android:hint="Postal Code"
                 app:boxCornerRadiusBottomEnd="24dp"
                 app:boxCornerRadiusBottomStart="24dp"
                 app:boxCornerRadiusTopEnd="24dp"
@@ -133,7 +133,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dist_empl"
+                app:layout_constraintTop_toBottomOf="@+id/dist_emplee"
                 app:startIconDrawable="@drawable/ic_pincode">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -155,7 +155,7 @@
 
         android:text="Painter"
         android:textSize="80sp"
-        app:closeIconEnabled="true"
+
         app:layout_constraintBottom_toTopOf="@+id/chip5"
         app:layout_constraintEnd_toStartOf="@+id/chip7"
         app:layout_constraintHorizontal_bias="0.5"
@@ -170,7 +170,7 @@
 
         android:text="Carpenter"
         android:textSize="80sp"
-        app:closeIconEnabled="true"
+
         app:layout_constraintBottom_toTopOf="@+id/chip6"
         app:layout_constraintEnd_toStartOf="@+id/chip9"
         app:layout_constraintHorizontal_bias="0.5"
@@ -185,15 +185,15 @@
 
         android:text="Electrician"
         android:textSize="80sp"
-        app:closeIconEnabled="true"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+
+        app:layout_constraintBottom_toTopOf="@+id/submitEmplee"
         app:layout_constraintEnd_toStartOf="@+id/chip11"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chip5" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/submitEmplee"
         style="@style/ButtonFilled"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -214,7 +214,7 @@
 
         android:text="Cleaner"
         android:textSize="80sp"
-        app:closeIconEnabled="true"
+
         app:layout_constraintEnd_toStartOf="@+id/chip8"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/chip4"
@@ -228,7 +228,7 @@
 
         android:text="Constructor"
         android:textSize="80sp"
-        app:closeIconEnabled="true"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/chip7"
@@ -242,7 +242,7 @@
 
         android:text="plumber"
         android:textSize="80sp"
-        app:closeIconEnabled="true"
+
         app:layout_constraintEnd_toStartOf="@+id/chip10"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/chip5"
@@ -256,7 +256,7 @@
 
         android:text="Mechanic"
         android:textSize="80sp"
-        app:closeIconEnabled="true"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/chip9"
@@ -270,7 +270,7 @@
 
         android:text="Technician"
         android:textSize="80sp"
-        app:closeIconEnabled="true"
+
         app:layout_constraintEnd_toStartOf="@+id/chip12"
         app:layout_constraintHorizontal_bias="0.5"
 
@@ -283,7 +283,7 @@
 
         android:text="Goods Delivery"
         android:textSize="80sp"
-        app:closeIconEnabled="true"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

@@ -17,3 +17,4 @@ public class LoginActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new RegisterEmployerFragment()).commit();
     }
 }
+//firebase user kaise aa rha otp verify toh krwa nhi rhe
