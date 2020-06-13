@@ -8,10 +8,6 @@
         android:name="com.restartindia.naukri.main.view.HomeFragment"
         android:label="HomeFragment" />
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.restartindia.naukri.main.view.SearchFragment"
-        android:label="SearchFragment" />
-    <fragment
         android:id="@+id/profileFragment"
         android:name="com.restartindia.naukri.main.view.ProfileFragment"
         android:label="ProfileFragment" />
