@@ -8,4 +8,6 @@
     <string name="enter_no_body">Enter your mobile number to receive a verification code.</string>
     <string name="next">NEXT</string>
     <string name="contact">Contact Number</string>
+    <string name="verify">Verify</string>
+    <string name="categories">Categories</string>
 </resources>

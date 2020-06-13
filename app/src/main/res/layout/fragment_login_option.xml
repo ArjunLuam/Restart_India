@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:alpha="0.9"
-        android:text="Let's Get Started"
+        android:text="Welcome to Naukri."
         app:layout_constraintBottom_toTopOf="@+id/tvBody"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
         style="@style/BodyText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Join Us Now And Enjoy Credit Free Shipping Instantly"
+        android:text="Join India's own job portal to look for a job or hire someone"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="@+id/tvHeader"
         app:layout_constraintHorizontal_bias="0.0"
@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="243dp" />
+        app:layout_constraintGuide_percent="0.33242133" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
