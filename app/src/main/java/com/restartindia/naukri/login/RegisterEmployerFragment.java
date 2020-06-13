@@ -11,13 +11,13 @@ import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -99,28 +99,44 @@ public class RegisterEmployerFragment extends Fragment {
     private void uploadphoto() {
         if (imageuri != null) {
             progressDialog.show();
+            //imageuri = Utils.compressImage(getContext(), imageuri);
             StorageReference fileref = mstorageref.child(System.currentTimeMillis()
                     + "." + getfileExtension(imageuri));
+            UploadTask uploadTask = fileref.putFile(imageuri);
+            uploadTask.continueWithTask(task -> {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
+                }
+                return fileref.getDownloadUrl();
+            }).addOnCompleteListener(task -> {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-            fileref.putFile(imageuri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Toast.makeText(getContext(), "Upload Successful", Toast.LENGTH_LONG).show();
-                            progressDialog.dismiss();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                            progressDialog.dismiss();
-                        }
-                    });
+                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                        .setPhotoUri(task.getResult())
+                        .build();
+
+                user.updateProfile(profileUpdates)
+                        .addOnCompleteListener(task1 -> {
+                            if (task1.isSuccessful()) {
+                                Toast.makeText(getContext(), "Upload Successful", Toast.LENGTH_LONG).show();
+                                progressDialog.dismiss();
+                                afterImageUpload();
+
+                            }
+                        });
+
+            }).addOnFailureListener(e -> {
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            });
         } else {
             Toast.makeText(getContext(), "Upload photo", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    public void afterImageUpload() {
+        //TODO : Upload data here
     }
 
 }

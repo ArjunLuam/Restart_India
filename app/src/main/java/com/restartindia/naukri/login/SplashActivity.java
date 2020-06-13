@@ -8,6 +8,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.restartindia.naukri.R;
 import com.restartindia.naukri.main.view.MainActivity;
 
@@ -20,7 +22,12 @@ public class SplashActivity extends AppCompatActivity {
         ImageView logo = findViewById(R.id.ivLogo);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.logo_fade_in);
         logo.startAnimation(animation);
-        final Intent intent = new Intent(this, MainActivity.class);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final Intent intent;
+        if (user == null) {
+            intent = new Intent(this, LoginActivity.class);
+        } else
+            intent = new Intent(this, MainActivity.class);
         Thread timer = new Thread() {
             public void run() {
                 try {
