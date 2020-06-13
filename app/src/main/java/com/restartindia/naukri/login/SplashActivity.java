@@ -26,8 +26,8 @@ public class SplashActivity extends AppCompatActivity {
         final Intent intent;
         if (user == null) {
             intent = new Intent(this, LoginActivity.class);
-        } else
-            intent = new Intent(this, MainActivity.class);
+        }else
+           intent = new Intent(this, MainActivity.class);
         Thread timer = new Thread() {
             public void run() {
                 try {

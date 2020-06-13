@@ -56,17 +56,17 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Glide.with(this).load(user.getPhotoUrl()).into(profileImage);
         jobCategoryList.add(new JobCategory("Design", 100, R.color.color1, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("IT", 400, R.color.color2, R.drawable.ic_design_icon));
+       // jobCategoryList.add(new JobCategory("IT", 400, R.color.color2, R.drawable.ic_design_icon));
         jobCategoryList.add(new JobCategory("Plumber", 25, R.color.color3, R.drawable.ic_design_icon));
         jobCategoryList.add(new JobCategory("Carpenter", 300, R.color.color4, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Driver", 50, R.color.color5, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Mason", 80, R.color.color6, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Design", 100, R.color.color1, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("IT", 400, R.color.color2, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Plumber", 25, R.color.color3, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Carpenter", 300, R.color.color4, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Driver", 50, R.color.color5, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Mason", 80, R.color.color6, R.drawable.ic_design_icon));
+        jobCategoryList.add(new JobCategory("Goods Delivery ", 50, R.color.color5, R.drawable.ic_design_icon));
+        jobCategoryList.add(new JobCategory("Constructor", 80, R.color.color6, R.drawable.ic_design_icon));
+        jobCategoryList.add(new JobCategory("Mechanic", 100, R.color.color1, R.drawable.ic_design_icon));
+        jobCategoryList.add(new JobCategory("Technician", 400, R.color.color2, R.drawable.ic_design_icon));
+        jobCategoryList.add(new JobCategory("Electrician", 25, R.color.color3, R.drawable.ic_design_icon));
+        jobCategoryList.add(new JobCategory("Cleaner", 300, R.color.color4, R.drawable.ic_design_icon));
+     //   jobCategoryList.add(new JobCategory("Driver", 50, R.color.color5, R.drawable.ic_design_icon));
+      //  jobCategoryList.add(new JobCategory("Mason", 80, R.color.color6, R.drawable.ic_design_icon));
         adapter.notifyDataSetChanged();
     }
 }
