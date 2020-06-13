@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -28,6 +27,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -65,9 +65,7 @@ public class RegisterEmployerFragment extends Fragment {
 
     List<Address> addressList;
     Geocoder geocoder;
-    EditText etDistrict;
-    EditText etCity;
-    EditText name;
+    TextInputEditText etDistrict, etCity, etName;
     private static final String TAG = "Employer Fragment";
     int LOCATION_REQUEST_CODE = 10001;
 
@@ -91,7 +89,7 @@ public class RegisterEmployerFragment extends Fragment {
 
         etDistrict = view.findViewById(R.id.et_dist_emplee);
         etCity = view.findViewById(R.id.et_city_emplee);
-        name = view.findViewById(R.id.f_name_emplr);
+        etName = view.findViewById(R.id.et_f_name_emplee);
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setTitle("Registering");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -100,36 +98,16 @@ public class RegisterEmployerFragment extends Fragment {
         mstorageref = FirebaseStorage.getInstance().getReference("profile_pics");
 
         //Geolocation
-        fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(getContext());
-        if(ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
-            fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-                @Override
-                public void onComplete(@NonNull Task<Location> task) {
-                    Location location=task.getResult();
-                    if(location !=null){
-                        Geocoder geocoder=new Geocoder(getActivity(), Locale.getDefault());
-                        try {
-                            addressList=geocoder.getFromLocation(
-                                    location.getLatitude(),location.getLongitude(),1
-                            );
-                            etDistrict.setText(addressList.get(0).getLocality());
-                            etCity.setText(addressList.get(0).getPostalCode());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            });
-        }else{
-            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_REQUEST_CODE);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            getLastLocation();
+
+        } else {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
         }
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (name.getText().toString()==null || etCity.getText().toString() == null || etCity.getText().toString()==null){
-                    Toast.makeText(getContext(), "Please fill all details", Toast.LENGTH_SHORT).show();
-                }
                 openfilechooser();
             }
         });
@@ -138,13 +116,44 @@ public class RegisterEmployerFragment extends Fragment {
         msubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (etName.getText().toString().isEmpty() || etCity.getText().toString().isEmpty() || etCity.getText().toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Please fill all details", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 uploadphoto();
             }
         });
-
-
-
         return view;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == LOCATION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getLastLocation();
+            } else {
+                //TODO: Handle permission not granted later
+            }
+        }
+    }
+
+    private void getLastLocation() {
+        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+            @Override
+            public void onComplete(@NonNull Task<Location> task) {
+                Location location = task.getResult();
+                if (location != null) {
+                    Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
+                    try {
+                        addressList = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                        etDistrict.setText(addressList.get(0).getLocality());
+                        etCity.setText(addressList.get(0).getPostalCode());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 
 
@@ -204,7 +213,7 @@ public class RegisterEmployerFragment extends Fragment {
                 progressDialog.dismiss();
             });
         } else {
-            Toast.makeText(getContext(), "Upload photo", Toast.LENGTH_SHORT).show();
+            afterImageUpload();
         }
 
     }
@@ -212,15 +221,6 @@ public class RegisterEmployerFragment extends Fragment {
     public void afterImageUpload() {
         //TODO : Upload data here
     }
-
-
-
-
-
-
-
-
-
 
 
 }
