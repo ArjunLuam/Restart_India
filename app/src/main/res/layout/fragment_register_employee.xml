@@ -152,8 +152,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
-        android:checked="true"
-        android:text="Mason"
+
+        android:text="Painter"
         android:textSize="80sp"
         app:closeIconEnabled="true"
         app:layout_constraintBottom_toTopOf="@+id/chip5"
@@ -167,8 +167,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
-        android:checked="true"
-        android:text="Mason"
+
+        android:text="Carpenter"
         android:textSize="80sp"
         app:closeIconEnabled="true"
         app:layout_constraintBottom_toTopOf="@+id/chip6"
@@ -182,8 +182,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
-        android:checked="true"
-        android:text="Mason"
+
+        android:text="Electrician"
         android:textSize="80sp"
         app:closeIconEnabled="true"
         app:layout_constraintBottom_toTopOf="@+id/button"
@@ -209,12 +209,12 @@
     <com.google.android.material.chip.Chip
         android:id="@+id/chip7"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:checkable="true"
-        android:checked="true"
-        android:text="Mason"
+
+        android:text="Cleaner"
         android:textSize="80sp"
         app:closeIconEnabled="true"
-        android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@+id/chip8"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/chip4"
@@ -225,8 +225,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
-        android:checked="true"
-        android:text="Mason"
+
+        android:text="Constructor"
         android:textSize="80sp"
         app:closeIconEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -239,8 +239,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
-        android:checked="true"
-        android:text="Mason"
+
+        android:text="plumber"
         android:textSize="80sp"
         app:closeIconEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/chip10"
@@ -253,8 +253,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
-        android:checked="true"
-        android:text="Mason"
+
+        android:text="Mechanic"
         android:textSize="80sp"
         app:closeIconEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -267,8 +267,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
-        android:checked="true"
-        android:text="Mason"
+
+        android:text="Technician"
         android:textSize="80sp"
         app:closeIconEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/chip12"
@@ -280,8 +280,8 @@
     <com.google.android.material.chip.Chip
         android:id="@+id/chip12"
         android:checkable="true"
-        android:checked="true"
-        android:text="Mason"
+
+        android:text="Goods Delivery"
         android:textSize="80sp"
         app:closeIconEnabled="true"
         android:layout_width="wrap_content"
