@@ -1,4 +1,4 @@
-package com.restartindia.naukri.login;
+package com.restartindia.naukri.login.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

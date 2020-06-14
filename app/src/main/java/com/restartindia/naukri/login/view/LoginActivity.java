@@ -1,4 +1,4 @@
-package com.restartindia.naukri.login;
+package com.restartindia.naukri.login.view;
 
 import android.os.Bundle;
 
@@ -12,8 +12,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-
+        //TODO: Change this to LoginOption fragment
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new RegisterEmployerFragment()).commit();
     }
 }

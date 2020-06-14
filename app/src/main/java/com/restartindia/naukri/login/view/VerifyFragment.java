@@ -1,4 +1,4 @@
-package com.restartindia.naukri.login;
+package com.restartindia.naukri.login.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,7 +22,6 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import com.restartindia.naukri.R;
 import com.restartindia.naukri.util.Constants;
 
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class VerifyFragment extends Fragment {

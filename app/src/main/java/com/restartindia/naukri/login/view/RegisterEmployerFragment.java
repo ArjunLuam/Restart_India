@@ -1,4 +1,4 @@
-package com.restartindia.naukri.login;
+package com.restartindia.naukri.login.view;
 
 import android.Manifest;
 import android.app.ProgressDialog;
@@ -10,11 +10,11 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -28,6 +28,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -35,12 +36,19 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.restartindia.naukri.R;
+import com.restartindia.naukri.login.model.PostData;
+import com.restartindia.naukri.login.model.PostResponse;
+import com.restartindia.naukri.service.RetrofitInstance;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -53,21 +61,13 @@ public class RegisterEmployerFragment extends Fragment {
     private MaterialButton msubmit;
     private StorageReference mstorageref;
     ProgressDialog progressDialog;
-    private int REQUEST_CODE_LOCATION_PERMISSION = 99;
-
-    String address1;
-    String area;
-    String city;
-    String postalCode;
-    String country;
     FusedLocationProviderClient fusedLocationProviderClient;
-    private double latitude, longitude;
 
     List<Address> addressList;
-    Geocoder geocoder;
-    EditText etDistrict;
-    EditText etCity;
-    EditText name;
+    TextInputLayout etDistrict;
+    TextInputLayout etCity;
+    TextInputLayout name;
+
     private static final String TAG = "Employer Fragment";
     int LOCATION_REQUEST_CODE = 10001;
 
@@ -86,12 +86,15 @@ public class RegisterEmployerFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_register_employer, container, false);
 
 
-        circleImageView = view.findViewById(R.id.ivUploadedImage);
+        circleImageView = view.findViewById(R.id.ivUploadedImageemp);
         msubmit = view.findViewById(R.id.empl_submit);
 
-        etDistrict = view.findViewById(R.id.et_dist_emplee);
-        etCity = view.findViewById(R.id.et_city_emplee);
-        name = view.findViewById(R.id.f_name_emplr);
+
+        etDistrict = view.findViewById(R.id.dist_emplee);
+        etCity = view.findViewById(R.id.city_emplee);
+        name = view.findViewById(R.id.f_name_emplee);
+
+
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setTitle("Registering");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -100,36 +103,17 @@ public class RegisterEmployerFragment extends Fragment {
         mstorageref = FirebaseStorage.getInstance().getReference("profile_pics");
 
         //Geolocation
-        fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(getContext());
-        if(ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
-            fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-                @Override
-                public void onComplete(@NonNull Task<Location> task) {
-                    Location location=task.getResult();
-                    if(location !=null){
-                        Geocoder geocoder=new Geocoder(getActivity(), Locale.getDefault());
-                        try {
-                            addressList=geocoder.getFromLocation(
-                                    location.getLatitude(),location.getLongitude(),1
-                            );
-                            etDistrict.setText(addressList.get(0).getLocality());
-                            etCity.setText(addressList.get(0).getPostalCode());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            });
-        }else{
-            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_REQUEST_CODE);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            getLastLocation();
+
+        } else {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
         }
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (name.getText().toString()==null || etCity.getText().toString() == null || etCity.getText().toString()==null){
-                    Toast.makeText(getContext(), "Please fill all details", Toast.LENGTH_SHORT).show();
-                }
                 openfilechooser();
             }
         });
@@ -138,13 +122,59 @@ public class RegisterEmployerFragment extends Fragment {
         msubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadphoto();
+
+                if (TextUtils.isEmpty(name.getEditText().getText().toString()) || TextUtils.isEmpty(etCity.getEditText().getText().toString()) || TextUtils.isEmpty(etDistrict.getEditText().getText().toString())) {
+                    Toast.makeText(getContext(), "Please fill all details", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    uploadphoto();
+                }
+
+            }
+        });
+        return view;
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == LOCATION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getLastLocation();
+            } else {
+                //TODO: Handle permission not granted later
+            }
+        }
+    }
+
+    private void getLastLocation() {
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+            @Override
+            public void onComplete(@NonNull Task<Location> task) {
+                Location location = task.getResult();
+                if (location != null) {
+                    Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
+                    try {
+                        addressList = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                        etDistrict.getEditText().setText(addressList.get(0).getLocality());
+                        etCity.getEditText().setText(addressList.get(0).getPostalCode());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
 
-
-
-        return view;
     }
 
 
@@ -204,25 +234,36 @@ public class RegisterEmployerFragment extends Fragment {
                 progressDialog.dismiss();
             });
         } else {
-            Toast.makeText(getContext(), "Upload photo", Toast.LENGTH_SHORT).show();
+            afterImageUpload();
         }
 
     }
 
     public void afterImageUpload() {
-        //TODO : Upload data here
+        List<String> skills = new ArrayList<>();
+        skills.add("Mason");
+        skills.add("Electrician");
+        PostData postData = new PostData("Divij Gupta", "12345", "123456", "Jammu", false, 180001, skills);
+        Call<PostResponse> call = RetrofitInstance.getService().createPost(postData);
+        call.enqueue(new Callback<PostResponse>() {
+            @Override
+            public void onResponse(Call<PostResponse> call, Response<PostResponse> response) {
+                Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<PostResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
 
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
 
 
