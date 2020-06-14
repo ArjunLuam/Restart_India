@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/chip4"
+        app:layout_constraintBottom_toTopOf="@+id/chippainter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -148,7 +148,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.chip.Chip
-        android:id="@+id/chip4"
+        android:id="@+id/chippainter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
@@ -156,14 +156,14 @@
         android:text="Painter"
         android:textSize="80sp"
 
-        app:layout_constraintBottom_toTopOf="@+id/chip5"
-        app:layout_constraintEnd_toStartOf="@+id/chip7"
+        app:layout_constraintBottom_toTopOf="@+id/chipCarpe"
+        app:layout_constraintEnd_toStartOf="@+id/chipCleaner"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialCardView3" />
 
     <com.google.android.material.chip.Chip
-        android:id="@+id/chip5"
+        android:id="@+id/chipCarpe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
@@ -171,14 +171,14 @@
         android:text="Carpenter"
         android:textSize="80sp"
 
-        app:layout_constraintBottom_toTopOf="@+id/chip6"
-        app:layout_constraintEnd_toStartOf="@+id/chip9"
+        app:layout_constraintBottom_toTopOf="@+id/chipelect"
+        app:layout_constraintEnd_toStartOf="@+id/chipplumb"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chip4" />
+        app:layout_constraintTop_toBottomOf="@+id/chippainter" />
 
     <com.google.android.material.chip.Chip
-        android:id="@+id/chip6"
+        android:id="@+id/chipelect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
@@ -187,10 +187,10 @@
         android:textSize="80sp"
 
         app:layout_constraintBottom_toTopOf="@+id/submitEmplee"
-        app:layout_constraintEnd_toStartOf="@+id/chip11"
+        app:layout_constraintEnd_toStartOf="@+id/chiptech"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chip5" />
+        app:layout_constraintTop_toBottomOf="@+id/chipCarpe" />
 
     <Button
         android:id="@+id/submitEmplee"
@@ -204,10 +204,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chip6" />
+        app:layout_constraintTop_toBottomOf="@+id/chipelect" />
 
     <com.google.android.material.chip.Chip
-        android:id="@+id/chip7"
+        android:id="@+id/chipCleaner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
@@ -215,13 +215,13 @@
         android:text="Cleaner"
         android:textSize="80sp"
 
-        app:layout_constraintEnd_toStartOf="@+id/chip8"
+        app:layout_constraintEnd_toStartOf="@+id/chipConstructor"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/chip4"
-        app:layout_constraintTop_toTopOf="@+id/chip4" />
+        app:layout_constraintStart_toEndOf="@+id/chippainter"
+        app:layout_constraintTop_toTopOf="@+id/chippainter" />
 
     <com.google.android.material.chip.Chip
-        android:id="@+id/chip8"
+        android:id="@+id/chipConstructor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
@@ -231,11 +231,11 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/chip7"
-        app:layout_constraintTop_toTopOf="@+id/chip7" />
+        app:layout_constraintStart_toEndOf="@+id/chipCleaner"
+        app:layout_constraintTop_toTopOf="@+id/chipCleaner" />
 
     <com.google.android.material.chip.Chip
-        android:id="@+id/chip9"
+        android:id="@+id/chipplumb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
@@ -243,13 +243,13 @@
         android:text="plumber"
         android:textSize="80sp"
 
-        app:layout_constraintEnd_toStartOf="@+id/chip10"
+        app:layout_constraintEnd_toStartOf="@+id/chipmech"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/chip5"
-        app:layout_constraintTop_toTopOf="@+id/chip5" />
+        app:layout_constraintStart_toEndOf="@+id/chipCarpe"
+        app:layout_constraintTop_toTopOf="@+id/chipCarpe" />
 
     <com.google.android.material.chip.Chip
-        android:id="@+id/chip10"
+        android:id="@+id/chipmech"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
@@ -259,11 +259,11 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/chip9"
-        app:layout_constraintTop_toTopOf="@+id/chip9" />
+        app:layout_constraintStart_toEndOf="@+id/chipplumb"
+        app:layout_constraintTop_toTopOf="@+id/chipplumb" />
 
     <com.google.android.material.chip.Chip
-        android:id="@+id/chip11"
+        android:id="@+id/chiptech"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checkable="true"
@@ -271,14 +271,14 @@
         android:text="Technician"
         android:textSize="80sp"
 
-        app:layout_constraintEnd_toStartOf="@+id/chip12"
+        app:layout_constraintEnd_toStartOf="@+id/chipgoods"
         app:layout_constraintHorizontal_bias="0.5"
 
-        app:layout_constraintStart_toEndOf="@+id/chip6"
-        app:layout_constraintTop_toTopOf="@+id/chip6" />
+        app:layout_constraintStart_toEndOf="@+id/chipelect"
+        app:layout_constraintTop_toTopOf="@+id/chipelect" />
 
     <com.google.android.material.chip.Chip
-        android:id="@+id/chip12"
+        android:id="@+id/chipgoods"
         android:checkable="true"
 
         android:text="Goods Delivery"
@@ -288,6 +288,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/chip11"
-        app:layout_constraintTop_toTopOf="@+id/chip11" />
+        app:layout_constraintStart_toEndOf="@+id/chiptech"
+        app:layout_constraintTop_toTopOf="@+id/chiptech" />
 </androidx.constraintlayout.widget.ConstraintLayout>

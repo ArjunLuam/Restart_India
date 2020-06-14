@@ -11,9 +11,16 @@ public class Constants {
 
 
     //TODO: ADD ALL CATEGORIES HERE
-    public static final String MASON = "Mason";
+
     public static final String ELECTRICIAN = "Electrician";
     public static final String PLUMBER = "Plumber";
-    public static final String DRIVER = "Driver";
+    public static final String CARPENTER  ="Carpenter";
+    public static final String DESIGN  ="Design";
+    public static final String GOODS ="Goods Delivery";
+    public static final String CONSTRUCTOR ="Constructor";
+    public static final String MECHANIC ="Mechanic";
+    public static final String TECHNICIAN = "Technician";
+    public static final String CLEANER ="Cleaner";
+
 
 }

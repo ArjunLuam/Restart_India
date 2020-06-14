@@ -26,6 +26,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.chip.Chip;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -83,6 +84,9 @@ public class RegisterEmployeeFragment extends Fragment {
 
     ImageView fetchLocation;
 
+    //Chips
+    Chip painter ,cleaner,constructor,carpenter,plumber,Mechanic,Electrician,Technician,goods;
+    ArrayList<String> skills = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,7 +99,85 @@ public class RegisterEmployeeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_register_employee, container, false);
 
+        skills =new ArrayList<>();
+        //chips
+        painter = view.findViewById(R.id.chippainter);
+        cleaner = view.findViewById(R.id.chipCleaner);
+        constructor = view.findViewById(R.id.chipConstructor);
+        carpenter = view.findViewById(R.id.chipCarpe);
+        plumber = view.findViewById(R.id.chipplumb);
+        Mechanic  = view.findViewById(R.id.chipmech);
+        Electrician = view.findViewById(R.id.chipelect);
+        Technician = view.findViewById(R.id.chiptech);
+        goods = view.findViewById(R.id.chipgoods);
 
+        painter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                skills.add("painter");
+            }
+        });
+
+        cleaner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                skills.add("cleaner");
+            }
+        });
+
+        constructor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                skills.add("constructor");
+            }
+        });
+
+
+        carpenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skills.add("carpenter");
+            }
+        });
+
+        plumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skills.add("plumber");
+            }
+        });
+
+        Mechanic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skills.add("Mechanic");
+            }
+        });
+
+        Electrician.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skills.add("Electrician");
+            }
+        });
+
+        Technician.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skills.add("Technician");
+
+            }
+        });
+
+        goods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skills.add("goods");
+            }
+        });
         circleImageView = view.findViewById(R.id.uploadImageEmplee);
         msubmit = view.findViewById(R.id.submitEmplee);
 
@@ -201,7 +283,7 @@ public class RegisterEmployeeFragment extends Fragment {
 
     public void afterImageUpload() {
         //TODO : Upload data here
-        ArrayList<String>skills=new ArrayList<>();
+
 
         progressDialog.setTitle("Registering");
         PostData postData = new PostData(name, "1231231231", FirebaseAuth.getInstance().getUid(), district, true, pinCode, skills);
