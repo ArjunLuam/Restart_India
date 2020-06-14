@@ -1,4 +1,4 @@
-package com.restartindia.naukri.login;
+package com.restartindia.naukri.login.view;
 
 import android.content.Intent;
 import android.os.Bundle;
