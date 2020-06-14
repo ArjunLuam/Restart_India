@@ -40,7 +40,6 @@ public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter<Categori
     public void onBindViewHolder(@NonNull CategoriesViewHolder holder, int position) {
         JobCategory jobCategory = jobCategoryList.get(position);
         holder.icon.setImageResource(jobCategory.getIcon());
-        holder.icon.setColorFilter(ContextCompat.getColor(mCtx, jobCategory.getColor()));
         holder.category.setText(jobCategory.getCategory());
         holder.jobs.setText(jobCategory.getJobs() + " Jobs");
         holder.shadow.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(mCtx, jobCategory.getColor())));
