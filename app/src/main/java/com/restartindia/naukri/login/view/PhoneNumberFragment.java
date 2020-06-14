@@ -40,9 +40,8 @@ public class PhoneNumberFragment extends Fragment {
                 textInputLayout.setError("Valid number is required");
                 textInputLayout.requestFocus();
             } else {
-                String phoneNumber = "+" + 91 + phn_no;
                 Bundle bundle = new Bundle();
-                bundle.putString(Constants.PHONE_NUMBER, phoneNumber);
+                bundle.putString(Constants.PHONE_NUMBER, phn_no);
                 VerifyFragment verifyFragment = new VerifyFragment();
                 verifyFragment.setArguments(bundle);
                 FragmentTransaction fr = getActivity().getSupportFragmentManager().beginTransaction();
@@ -52,24 +51,5 @@ public class PhoneNumberFragment extends Fragment {
 
         });
         return view;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            List<? extends UserInfo> pd = user.getProviderData();
-            UserInfo providerData = pd.get(1);
-            String pid = providerData.getProviderId();
-
-            Intent intent = new Intent(getContext(), BottomNavActivity.class);
-            startActivity(intent);
-
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.container, new VerifyFragment());
-            transaction.commit();
-
-        }*/
     }
 }

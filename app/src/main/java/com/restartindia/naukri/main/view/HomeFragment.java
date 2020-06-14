@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ public class HomeFragment extends Fragment {
     private PostResponse userData;
     private ImageView ivIllus;
     private TextView tvTitle, tvThanks;
+    private ProgressBar progressBar;
 
 
     @Override
@@ -59,6 +61,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(adapter);
         profileImage = view.findViewById(R.id.ivProfileImage);
+        progressBar = view.findViewById(R.id.progressBar);
         ivIllus = view.findViewById(R.id.ivIllus);
         tvTitle = view.findViewById(R.id.tvTitle);
         tvThanks = view.findViewById(R.id.tvThanks);
@@ -76,6 +79,7 @@ public class HomeFragment extends Fragment {
         viewModel.getUser(firebaseUser.getUid()).observe(getActivity(), new Observer<PostResponse>() {
             @Override
             public void onChanged(PostResponse postResponse) {
+                progressBar.setVisibility(View.INVISIBLE);
                 userData = postResponse;
                 if (userData.getIsEmployee()) {
                     showThankYouScreen();
@@ -102,7 +106,6 @@ public class HomeFragment extends Fragment {
         //TODO: Change icons and categories here, add from freepik. Pass the parameter to JobCategory from Constants class
 
         jobCategoryList.add(new JobCategory("Design", 100, R.color.color1, R.drawable.ic_design_icon));
-       // jobCategoryList.add(new JobCategory("IT", 400, R.color.color2, R.drawable.ic_design_icon));
         jobCategoryList.add(new JobCategory("Plumber", 25, R.color.color3, R.drawable.ic_design_icon));
         jobCategoryList.add(new JobCategory("Carpenter", 300, R.color.color4, R.drawable.ic_design_icon));
         jobCategoryList.add(new JobCategory("Goods Delivery ", 50, R.color.color5, R.drawable.ic_design_icon));
@@ -111,8 +114,6 @@ public class HomeFragment extends Fragment {
         jobCategoryList.add(new JobCategory("Technician", 400, R.color.color2, R.drawable.ic_design_icon));
         jobCategoryList.add(new JobCategory("Electrician", 25, R.color.color3, R.drawable.ic_design_icon));
         jobCategoryList.add(new JobCategory("Cleaner", 300, R.color.color4, R.drawable.ic_design_icon));
-     //   jobCategoryList.add(new JobCategory("Driver", 50, R.color.color5, R.drawable.ic_design_icon));
-      //  jobCategoryList.add(new JobCategory("Mason", 80, R.color.color6, R.drawable.ic_design_icon));
         adapter.notifyDataSetChanged();
     }
 }

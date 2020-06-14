@@ -81,7 +81,8 @@ public class VerifyFragment extends Fragment {
         final Bundle bundle = getArguments();
         if (bundle != null) {
             phoneNumber = bundle.getString(Constants.PHONE_NUMBER);
-            sendVerificationCode(phoneNumber);
+            String phn_no = "+" + 91 + phoneNumber;
+            sendVerificationCode(phn_no);
         }
         verify.setOnClickListener(v -> {
             pinEntryEditText.setError(false);
@@ -112,15 +113,16 @@ public class VerifyFragment extends Fragment {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        RegisterEmployerFragment registerEmployerFragment = new RegisterEmployerFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString(Constants.PHONE_NUMBER, phoneNumber);
+                        registerEmployerFragment.setArguments(bundle);
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                         FragmentTransaction transaction = fragmentManager.beginTransaction();
-                        transaction.replace(R.id.container, new RegisterEmployerFragment());
+                        transaction.replace(R.id.container, registerEmployerFragment);
                         transaction.commit();
                     }
-//                    } else {
-//                        Toast.makeText(getContext(), "Sign In Failed", Toast.LENGTH_LONG).show();
-//                    }
                 });
     }
 

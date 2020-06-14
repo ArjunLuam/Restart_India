@@ -1,5 +1,7 @@
 package com.restartindia.naukri.service;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.restartindia.naukri.login.model.PostResponse;
@@ -45,7 +47,7 @@ public class Repository {
 
             @Override
             public void onFailure(Call<PostResponse> call, Throwable t) {
-
+                Log.d("Fail", t.getMessage());
             }
         });
         return user;

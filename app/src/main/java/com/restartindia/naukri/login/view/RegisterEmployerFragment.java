@@ -38,10 +38,11 @@ import com.google.firebase.storage.UploadTask;
 import com.restartindia.naukri.R;
 import com.restartindia.naukri.login.model.PostData;
 import com.restartindia.naukri.login.model.PostResponse;
+import com.restartindia.naukri.main.view.MainActivity;
 import com.restartindia.naukri.service.RetrofitInstance;
+import com.restartindia.naukri.util.Constants;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -66,7 +67,10 @@ public class RegisterEmployerFragment extends Fragment {
     List<Address> addressList;
     TextInputLayout etDistrict;
     TextInputLayout etCity;
-    TextInputLayout name;
+    TextInputLayout etName;
+
+    String name, phoneNumber, district;
+    int pinCode;
 
     private static final String TAG = "Employer Fragment";
     int LOCATION_REQUEST_CODE = 10001;
@@ -92,11 +96,12 @@ public class RegisterEmployerFragment extends Fragment {
 
         etDistrict = view.findViewById(R.id.dist_emplee);
         etCity = view.findViewById(R.id.city_emplee);
-        name = view.findViewById(R.id.f_name_emplee);
+        etName = view.findViewById(R.id.f_name_emplee);
+        phoneNumber = getArguments().getString(Constants.PHONE_NUMBER);
 
 
         progressDialog = new ProgressDialog(getContext());
-        progressDialog.setTitle("Registering");
+        progressDialog.setTitle("Uploading Image");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setMessage("Please Wait");
 
@@ -123,10 +128,14 @@ public class RegisterEmployerFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (TextUtils.isEmpty(name.getEditText().getText().toString()) || TextUtils.isEmpty(etCity.getEditText().getText().toString()) || TextUtils.isEmpty(etDistrict.getEditText().getText().toString())) {
+                if (TextUtils.isEmpty(etName.getEditText().getText().toString()) || TextUtils.isEmpty(etCity.getEditText().getText().toString()) || TextUtils.isEmpty(etDistrict.getEditText().getText().toString())) {
                     Toast.makeText(getContext(), "Please fill all details", Toast.LENGTH_SHORT).show();
 
                 } else {
+                    name = etName.getEditText().getText().toString();
+                    pinCode = Integer.parseInt(etCity.getEditText().getText().toString());
+                    district = etDistrict.getEditText().getText().toString();
+
                     uploadphoto();
                 }
 
@@ -217,15 +226,13 @@ public class RegisterEmployerFragment extends Fragment {
 
                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                         .setPhotoUri(task.getResult())
+                        .setDisplayName(name)
                         .build();
 
                 user.updateProfile(profileUpdates)
                         .addOnCompleteListener(task1 -> {
                             if (task1.isSuccessful()) {
-                                Toast.makeText(getContext(), "Upload Successful", Toast.LENGTH_LONG).show();
-                                progressDialog.dismiss();
                                 afterImageUpload();
-
                             }
                         });
 
@@ -240,21 +247,22 @@ public class RegisterEmployerFragment extends Fragment {
     }
 
     public void afterImageUpload() {
-        List<String> skills = new ArrayList<>();
-        skills.add("Mason");
-        skills.add("Electrician");
-        PostData postData = new PostData("Divij Gupta", "12345", "123456", "Jammu", false, 180001, skills);
+        progressDialog.setTitle("Registering");
+        PostData postData = new PostData(name, "1231231231", FirebaseAuth.getInstance().getUid(), district, false, pinCode, null);
         Call<PostResponse> call = RetrofitInstance.getService().createPost(postData);
         call.enqueue(new Callback<PostResponse>() {
             @Override
             public void onResponse(Call<PostResponse> call, Response<PostResponse> response) {
                 Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                startActivity(new Intent(getContext(), MainActivity.class));
+                getActivity().finish();
             }
 
             @Override
             public void onFailure(Call<PostResponse> call, Throwable t) {
-                Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
             }
         });
     }

@@ -10,7 +10,7 @@ public class MainActivityViewModel extends ViewModel {
     private Repository repository;
     private LiveData<PostResponse> user;
 
-    MainActivityViewModel() {
+    public MainActivityViewModel() {
         repository = new Repository();
     }
 
