@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
-    tools:context=".login.RegisterEmployerFragment">
+    tools:context=".login.view.RegisterEmployerFragment">
 
     <TextView
         android:id="@+id/tv_register"
@@ -37,8 +37,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/f_name_empl"
+                android:id="@+id/f_name_emplee"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,7 +52,7 @@
                 app:boxCornerRadiusBottomStart="24dp"
                 app:boxCornerRadiusTopEnd="24dp"
                 app:boxCornerRadiusTopStart="24dp"
-                app:layout_constraintBottom_toTopOf="@+id/dist_empl"
+                app:layout_constraintBottom_toTopOf="@+id/dist_emplee"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +60,7 @@
                 app:startIconDrawable="@drawable/ic_name">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_f_name_empl"
+                    android:id="@+id/et_f_name_emplee"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
@@ -66,7 +68,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/dist_empl"
+                android:id="@+id/dist_emplee"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,29 +81,29 @@
                 app:boxCornerRadiusBottomStart="24dp"
                 app:boxCornerRadiusTopEnd="24dp"
                 app:boxCornerRadiusTopStart="24dp"
-                app:layout_constraintBottom_toTopOf="@+id/city_empl"
+                app:layout_constraintBottom_toTopOf="@+id/city_emplee"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/f_name_empl"
+                app:layout_constraintTop_toBottomOf="@+id/f_name_emplee"
                 app:startIconDrawable="@drawable/ic_district">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_dist_empl"
+                    android:id="@+id/et_dist_emplee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/city_empl"
+                android:id="@+id/city_emplee"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
-                android:hint="City"
+                android:hint="Postal Code"
                 app:boxCornerRadiusBottomEnd="24dp"
                 app:boxCornerRadiusBottomStart="24dp"
                 app:boxCornerRadiusTopEnd="24dp"
@@ -110,15 +112,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dist_empl"
+                app:layout_constraintTop_toBottomOf="@+id/dist_emplee"
                 app:startIconDrawable="@drawable/ic_pincode">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_city_empl"
+                    android:id="@+id/et_city_emplee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -150,7 +154,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_register" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/ivUploadedImage"
+        android:id="@+id/ivUploadedImageemp"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:visibility="visible"

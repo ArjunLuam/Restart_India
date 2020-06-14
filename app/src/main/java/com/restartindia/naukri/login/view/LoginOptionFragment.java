@@ -1,4 +1,4 @@
-package com.restartindia.naukri.login;
+package com.restartindia.naukri.login.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,7 +24,7 @@ public class LoginOptionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login_option, container, false);
-        Button register = view.findViewById(R.id.btn_signup);
+        Button register = view.findViewById(R.id.btn_login);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
