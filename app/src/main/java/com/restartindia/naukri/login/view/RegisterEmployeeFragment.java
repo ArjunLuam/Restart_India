@@ -34,12 +34,20 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.restartindia.naukri.R;
+import com.restartindia.naukri.login.model.PostData;
+import com.restartindia.naukri.login.model.PostResponse;
+import com.restartindia.naukri.main.view.MainActivity;
+import com.restartindia.naukri.service.RetrofitInstance;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.app.Activity.RESULT_OK;
 import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
@@ -54,12 +62,14 @@ public class RegisterEmployeeFragment extends Fragment {
     private StorageReference mstorageref;
     ProgressDialog progressDialog;
     private int REQUEST_CODE_LOCATION_PERMISSION = 99;
+    String name, phoneNumber, district;
+    int pinCode;
 
-    String address1;
-    String area;
+//    String address1;
+//    String area;
     String city;
-    String postalCode;
-    String country;
+//    String postalCode;
+//    String country;
     FusedLocationProviderClient fusedLocationProviderClient;
     private double latitude, longitude;
 
@@ -191,6 +201,27 @@ public class RegisterEmployeeFragment extends Fragment {
 
     public void afterImageUpload() {
         //TODO : Upload data here
+        ArrayList<String>skills=new ArrayList<>();
+
+        progressDialog.setTitle("Registering");
+        PostData postData = new PostData(name, "1231231231", FirebaseAuth.getInstance().getUid(), district, true, pinCode, skills);
+        Call<PostResponse> call = RetrofitInstance.getService().createPost(postData);
+        call.enqueue(new Callback<PostResponse>() {
+            @Override
+            public void onResponse(Call<PostResponse> call, Response<PostResponse> response) {
+                Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                startActivity(new Intent(getContext(), MainActivity.class));
+                getActivity().finish();
+            }
+
+            @Override
+            public void onFailure(Call<PostResponse> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            }
+        });
+
     }
 
 
