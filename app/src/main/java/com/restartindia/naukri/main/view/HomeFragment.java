@@ -107,15 +107,15 @@ public class HomeFragment extends Fragment implements CategoriesRecyclerViewAdap
 
         //TODO: Change icons and categories here, add from freepik. Pass the parameter to JobCategory from Constants class
 
-        jobCategoryList.add(new JobCategory("Design", 100, R.color.color1, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Plumber", 25, R.color.color3, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Carpenter", 300, R.color.color4, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Goods Delivery ", 50, R.color.color5, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Constructor", 80, R.color.color6, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Mechanic", 100, R.color.color1, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Technician", 400, R.color.color2, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Electrician", 25, R.color.color3, R.drawable.ic_design_icon));
-        jobCategoryList.add(new JobCategory("Cleaner", 300, R.color.color4, R.drawable.ic_design_icon));
+        jobCategoryList.add(new JobCategory("Design", 100, R.color.color1, R.drawable.ic_sewing));
+        jobCategoryList.add(new JobCategory("Plumber", 25, R.color.color3, R.drawable.plumber));
+        jobCategoryList.add(new JobCategory("Carpenter", 300, R.color.color4, R.drawable.ic_builder));
+        jobCategoryList.add(new JobCategory("Goods Delivery ", 50, R.color.color5, R.drawable.ic_delivery));
+        jobCategoryList.add(new JobCategory("Constructor", 80, R.color.color6, R.drawable.ic_architect));
+        jobCategoryList.add(new JobCategory("Mechanic", 100, R.color.color1, R.drawable.ic_worker));
+        jobCategoryList.add(new JobCategory("Technician", 400, R.color.color2, R.drawable.ic_handyman));
+        jobCategoryList.add(new JobCategory("Electrician", 25, R.color.color3, R.drawable.ic_electrician));
+        jobCategoryList.add(new JobCategory("Cleaner", 300, R.color.color4, R.drawable.ic_cleaner));
         adapter.notifyDataSetChanged();
     }
 

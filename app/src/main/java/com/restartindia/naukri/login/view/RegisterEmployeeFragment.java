@@ -26,6 +26,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.chip.Chip;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,12 +35,20 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.restartindia.naukri.R;
+import com.restartindia.naukri.login.model.PostData;
+import com.restartindia.naukri.login.model.PostResponse;
+import com.restartindia.naukri.main.view.MainActivity;
+import com.restartindia.naukri.service.RetrofitInstance;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.app.Activity.RESULT_OK;
 import static androidx.core.content.PermissionChecker.PERMISSION_GRANTED;
@@ -54,12 +63,14 @@ public class RegisterEmployeeFragment extends Fragment {
     private StorageReference mstorageref;
     ProgressDialog progressDialog;
     private int REQUEST_CODE_LOCATION_PERMISSION = 99;
+    String name, phoneNumber, district;
+    int pinCode;
 
-    String address1;
-    String area;
+//    String address1;
+//    String area;
     String city;
-    String postalCode;
-    String country;
+//    String postalCode;
+//    String country;
     FusedLocationProviderClient fusedLocationProviderClient;
     private double latitude, longitude;
 
@@ -73,6 +84,9 @@ public class RegisterEmployeeFragment extends Fragment {
 
     ImageView fetchLocation;
 
+    //Chips
+    Chip painter ,cleaner,constructor,carpenter,plumber,Mechanic,Electrician,Technician,goods;
+    ArrayList<String> skills = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,7 +99,85 @@ public class RegisterEmployeeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_register_employee, container, false);
 
+        skills =new ArrayList<>();
+        //chips
+        painter = view.findViewById(R.id.chippainter);
+        cleaner = view.findViewById(R.id.chipCleaner);
+        constructor = view.findViewById(R.id.chipConstructor);
+        carpenter = view.findViewById(R.id.chipCarpe);
+        plumber = view.findViewById(R.id.chipplumb);
+        Mechanic  = view.findViewById(R.id.chipmech);
+        Electrician = view.findViewById(R.id.chipelect);
+        Technician = view.findViewById(R.id.chiptech);
+        goods = view.findViewById(R.id.chipgoods);
 
+        painter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                skills.add("painter");
+            }
+        });
+
+        cleaner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                skills.add("cleaner");
+            }
+        });
+
+        constructor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                skills.add("constructor");
+            }
+        });
+
+
+        carpenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skills.add("carpenter");
+            }
+        });
+
+        plumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skills.add("plumber");
+            }
+        });
+
+        Mechanic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skills.add("Mechanic");
+            }
+        });
+
+        Electrician.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skills.add("Electrician");
+            }
+        });
+
+        Technician.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skills.add("Technician");
+
+            }
+        });
+
+        goods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skills.add("goods");
+            }
+        });
         circleImageView = view.findViewById(R.id.uploadImageEmplee);
         msubmit = view.findViewById(R.id.submitEmplee);
 
@@ -191,6 +283,27 @@ public class RegisterEmployeeFragment extends Fragment {
 
     public void afterImageUpload() {
         //TODO : Upload data here
+
+
+        progressDialog.setTitle("Registering");
+        PostData postData = new PostData(name, "1231231231", FirebaseAuth.getInstance().getUid(), district, true, pinCode, skills);
+        Call<PostResponse> call = RetrofitInstance.getService().createPost(postData);
+        call.enqueue(new Callback<PostResponse>() {
+            @Override
+            public void onResponse(Call<PostResponse> call, Response<PostResponse> response) {
+                Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                startActivity(new Intent(getContext(), MainActivity.class));
+                getActivity().finish();
+            }
+
+            @Override
+            public void onFailure(Call<PostResponse> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            }
+        });
+
     }
 
 
