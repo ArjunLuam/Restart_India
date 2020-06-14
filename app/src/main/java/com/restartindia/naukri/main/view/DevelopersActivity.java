@@ -1,10 +1,10 @@
-package com.restartindia.naukri.login;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.restartindia.naukri.main.view;
 
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.restartindia.naukri.R;
 
@@ -12,12 +12,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Developers extends AppCompatActivity {
-    private String[] names = new String[]{"Divij Gupta","Arjun Anand","Vishal Pal","Paras Gupta","Rajat Sharma"};
-    private String[] descriptions = new String[]{"","","","","","",""};
-    private int[] images = new int[]{R.drawable.divij,R.drawable.arjun,R.drawable.vishal,R.drawable.ic_name,R.drawable.ic_name,R.drawable.ic_name};
+public class DevelopersActivity extends AppCompatActivity {
+    private String[] names = new String[]{"Divij Gupta", "Arjun Anand", "Vishal Pal", "Paras Gupta", "Rajat Sharma"};
+    private String[] descriptions = new String[]{"", "", "", "", "", "", ""};
+    private int[] images = new int[]{R.drawable.divij, R.drawable.arjun, R.drawable.vishal, R.drawable.ic_name, R.drawable.ic_name, R.drawable.ic_name};
 
     private ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
