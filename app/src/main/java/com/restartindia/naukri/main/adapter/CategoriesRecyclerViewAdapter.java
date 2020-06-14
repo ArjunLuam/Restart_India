@@ -20,10 +20,12 @@ import java.util.List;
 public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter<CategoriesRecyclerViewAdapter.CategoriesViewHolder> {
     private List<JobCategory> jobCategoryList;
     private Context mCtx;
+    private Listener listener;
 
-    public CategoriesRecyclerViewAdapter(List<JobCategory> jobCategoryList, Context mCtx) {
+    public CategoriesRecyclerViewAdapter(List<JobCategory> jobCategoryList, Context mCtx, Listener listener) {
         this.jobCategoryList = jobCategoryList;
         this.mCtx = mCtx;
+        this.listener = listener;
     }
 
     @NonNull
@@ -43,6 +45,12 @@ public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter<Categori
         holder.jobs.setText(jobCategory.getJobs() + " Jobs");
         holder.shadow.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(mCtx, jobCategory.getColor())));
         holder.shadowText.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(mCtx, jobCategory.getColor())));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onCategoryClicked(jobCategory);
+            }
+        });
     }
 
     @Override
@@ -64,5 +72,9 @@ public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter<Categori
             jobs = itemView.findViewById(R.id.jobs);
 
         }
+    }
+
+    public interface Listener {
+        void onCategoryClicked(JobCategory jobCategory);
     }
 }

@@ -1,5 +1,6 @@
 package com.restartindia.naukri.main.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,13 +25,14 @@ import com.restartindia.naukri.login.model.PostResponse;
 import com.restartindia.naukri.main.adapter.CategoriesRecyclerViewAdapter;
 import com.restartindia.naukri.main.model.JobCategory;
 import com.restartindia.naukri.main.viewmodel.MainActivityViewModel;
+import com.restartindia.naukri.util.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements CategoriesRecyclerViewAdapter.Listener {
     private RecyclerView recyclerView;
     private MainActivityViewModel viewModel;
     private CategoriesRecyclerViewAdapter adapter;
@@ -49,7 +51,7 @@ public class HomeFragment extends Fragment {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         jobCategoryList = new ArrayList<>();
-        adapter = new CategoriesRecyclerViewAdapter(jobCategoryList, getContext());
+        adapter = new CategoriesRecyclerViewAdapter(jobCategoryList, getContext(), this);
         viewModel = new ViewModelProvider(getActivity()).get(MainActivityViewModel.class);
     }
 
@@ -115,5 +117,13 @@ public class HomeFragment extends Fragment {
         jobCategoryList.add(new JobCategory("Electrician", 25, R.color.color3, R.drawable.ic_design_icon));
         jobCategoryList.add(new JobCategory("Cleaner", 300, R.color.color4, R.drawable.ic_design_icon));
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onCategoryClicked(JobCategory jobCategory) {
+        Intent intent = new Intent(getContext(), ViewCategoryActivity.class);
+        intent.putExtra(Constants.PIN_CODE, userData.getPincode());
+        intent.putExtra(Constants.CATEGORY, jobCategory.getCategory());
+        startActivity(intent);
     }
 }
